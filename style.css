@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
+
+* {
+  transition: 0.3s;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(https://wallpaperplay.com/walls/full/7/2/9/20920.jpg);
+  overflow: hidden;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  color: black;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+#word {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.input-container {
+  position: relative;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 15%;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input {
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  border: 3px solid white;
+  border-radius: 30px;
+  background-color: transparent;
+  font-size: 3rem;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  text-align: center;
+  left: 10%;
+}
+
+input::placeholder {
+  color: rgba(0, 0, 0, 0.404);
+}
+
+input:focus {
+  outline: none;
+  border: 3px solid orange;
+}
+
+#success,
+#wrong {
+  font-size: 5rem;
+  opacity: 0;
+}
+
+#success {
+  color: springgreen;
+  float: right;
+}
+
+#wrong {
+  color: rgb(255, 87, 87);
+  float: left;
+}
+
+#tutorial {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 150px;
+  text-align: center;
+  padding: 20px;
+  border: 3px solid springgreen;
+  border-radius: 20px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  color: white;
+  box-shadow: 0 0 20px 10px black;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width: 550px) {
+  #word {
+    font-size: 2rem;
+  }
+  input {
+    width: 98vw;
+    left: -12%;
+  }
+  #tutorial {
+    height: 200px;
+    width: 95%;
+  }
+}
