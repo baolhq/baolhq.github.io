@@ -6,13 +6,15 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url(https://wallpaperplay.com/walls/full/7/2/9/20920.jpg);
+  background: linear-gradient(145deg, #333, #000);
   overflow: hidden;
 }
 
 .container {
   width: 100vw;
   height: 100vh;
+  opacity: 0;
+  background-image: url(https://wallpaperplay.com/walls/full/7/2/9/20920.jpg);
   color: black;
   letter-spacing: 5px;
   text-align: center;
@@ -82,11 +84,10 @@ input:focus {
 
 #tutorial {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 500px;
-  height: 150px;
   text-align: center;
   padding: 20px;
   border: 3px solid springgreen;
@@ -96,6 +97,12 @@ input:focus {
   color: white;
   box-shadow: 0 0 20px 10px black;
   background-color: rgba(0, 0, 0, 0.5);
+  line-height: 25px;
+}
+
+li:hover {
+  cursor: pointer;
+  color: springgreen !important;
 }
 
 a {
