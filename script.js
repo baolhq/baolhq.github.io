@@ -11,48 +11,31 @@ String.prototype.shuffle = function () {
   return a.join("");
 };
 
-var wordsField = [
-  {
-    id: 1,
-    arranged: "intelligence",
-  },
-  {
-    id: 2,
-    arranged: "universal",
-  },
-  {
-    id: 3,
-    arranged: "impossible",
-  },
-  {
-    id: 4,
-    arranged: "predator",
-  },
-  {
-    id: 5,
-    arranged: "desert-eagle",
-  },
-  {
-    id: 6,
-    arranged: "hello-world",
-  },
-  {
-    id: 7,
-    arranged: "titanic",
-  },
-  {
-    id: 8,
-    arranged: "you-can't-solve-this",
-  },
-  {
-    id: 9,
-    arranged: "incredible",
-  },
-  {
-    id: 10,
-    arranged: "congratulation!",
-  },
-];
+var words = [];
+const setWordsField = (val) => {
+  switch (val) {
+    case "tech":
+      words = [...technologies];
+      break;
+    case "anime":
+      words = [...animes];
+      break;
+    case "country":
+      words = [...countries];
+      break;
+    case "game":
+      words = [...games];
+  }
+  console.log(words);
+  $("#tutorial").fadeOut(500);
+  setTimeout(() => {
+    $("#tutorial").html(
+      `<h1><i class="fas fa-glass-cheers"></i> Congratulation! <i class="fas fa-glass-cheers"></i></h1><br />If you want to see more of my projects, contact me on <a href="http://facebook.com/quocbao.kaiser/" target="_blank"><i class="fab fa-facebook-square"></i></a>`
+    );
+    $(".container").css("opacity", "1");
+    $("#word").html(words[0].shuffle());
+  }, 500);
+};
 
 var currentIndex = 0;
 
@@ -61,13 +44,13 @@ $("#input").on("keyup", (e) => {
 });
 
 const checkWord = (val) => {
-  if (val === wordsField[currentIndex].arranged) success();
+  if (val === words[currentIndex]) success();
   else failed();
   $("#input").val("");
 };
 
 const success = () => {
-  if (currentIndex < 0) {
+  if (currentIndex < words.length - 1) {
     currentIndex++;
     $("#success").css("opacity", "0.7");
     $("#input")
@@ -76,7 +59,7 @@ const success = () => {
     $("#word").fadeOut(1000);
     setTimeout(() => {
       $("#input").css("padding-right", "0").attr("placeholder", "Guess here");
-      $("#word").html(wordsField[currentIndex].arranged.shuffle()).fadeIn(500);
+      $("#word").html(words[currentIndex].shuffle()).fadeIn(500);
       $("#success").css("opacity", "0");
     }, 1000);
   } else $("#tutorial").fadeIn(1000);
@@ -90,7 +73,7 @@ const failed = () => {
     .css("margin-left", "-11%");
   $("#input").attr("placeholder", "Try again!");
   setTimeout(() => {
-    $("#word").html(wordsField[currentIndex].arranged.shuffle()).fadeIn(500);
+    $("#word").html(words[currentIndex].shuffle()).fadeIn(500);
     $("#input")
       .css("border-color", "orange")
       .css("padding-left", "0")
@@ -98,15 +81,6 @@ const failed = () => {
     $("#wrong").css("opacity", "0");
   }, 1000);
 };
-
-document.addEventListener("click", (e) => {
-  $("#tutorial").fadeOut(500);
-  setTimeout(() => {
-    $("#tutorial").html(
-      `<h1><i class="fas fa-glass-cheers"></i> Congratulation! <i class="fas fa-glass-cheers"></i></h1><br />If you want to see more of my projects, contact me on <a href="http://facebook.com/quocbao.kaiser/" target="_blank"><i class="fab fa-facebook-square"></i></a>`
-    );
-  }, 2000);
-});
 
 document.addEventListener("keyup", (e) => {
   switch (e.key) {
