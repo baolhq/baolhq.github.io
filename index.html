@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anagram Game</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div id="word">liilenngetec</div>
-        <div class="input-container">
-            <i class="fas fa-times-circle" id="wrong"></i>
-            <input type="text" id="input" placeholder="Guess here" autocomplete="off">
-            <i class="fas fa-check-circle" id="success"></i>
-        </div>
+      <div id="word"></div>
+      <div class="input-container">
+        <i class="fas fa-times-circle" id="wrong"></i>
+        <input
+          type="text"
+          id="input"
+          placeholder="Guess here"
+          autocomplete="off"
+        />
+        <i class="fas fa-check-circle" id="success"></i>
+      </div>
     </div>
     <div id="tutorial">
-        <h1>Welcome to my Anagram game!</h1>
-        <h3>You can press from 1 to 9 to change the text color</h3>
-        <p><em>--Have fun!--</em></p>
+      <h1>Welcome to my Anagram game!</h1>
+      <h3>You can press from 1 to 9 to change the text color</h3>
+      <h3>Select one topic toplay:</h3>
+      <ol>
+        <li onclick="setWordsField('tech')">Technology</li>
+        <li onclick="setWordsField('anime')">Anime <em>(wibu lord?)</em></li>
+        <li onclick="setWordsField('country')">Country</li>
+        <li onclick="setWordsField('game')">Game</li>
+      </ol>
+      <p align="right"><em>--Have fun!--</em></p>
     </div>
+    <script src="./wordsField.js"></script>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
