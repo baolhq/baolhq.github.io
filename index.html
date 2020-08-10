@@ -1,49 +1,27 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Redirecting...</title>
-    <meta charset="utf-8" />
-    <!-- Redirect -->
-    <meta http-equiv = "refresh" content = "2; url = https://quocbao280.000webhostapp.com/personalPortfolio/" />
-  </head>
-
-  <style>
-    body {
-      background: linear-gradient(145deg, #333, #000);
-      color: white;
-    }
-    div {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-        sans-serif;
-      background-color: #333;
-      border-radius: 10px;
-      border: 3px ridge springgreen;
-      padding: 20px;
-      box-shadow: 0px 0px 50px 20px;
-    }
-    h1 {
-      font-size: 40px;
-      font-weight: 800;
-    }
-    h3 {
-      font-size: 25px;
-      font-weight: 400;
-    }
-    p {
-      opacity: 0.7;
-    }
-  </style>
-
-  <body>
-    <div>
-      <h1>Đang chuyển hướng..</h1>
-      <h3>Vui lòng chờ trong giây lát</h3>
-      <p><em>Bạn thích uống coffee chứ :></em></p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagram Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="word">liilenngetec</div>
+        <div class="input-container">
+            <i class="fas fa-times-circle" id="wrong"></i>
+            <input type="text" id="input" placeholder="Guess here" autocomplete="off">
+            <i class="fas fa-check-circle" id="success"></i>
+        </div>
     </div>
-  </body>
+    <div id="tutorial">
+        <h1>Welcome to my Anagram game!</h1>
+        <h3>You can press from 1 to 9 to change the text color</h3>
+        <p><em>--Have fun!--</em></p>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
