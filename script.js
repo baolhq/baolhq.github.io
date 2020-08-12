@@ -80,7 +80,6 @@ const setWordsField = (val) => {
     case "game":
       words = [...games];
   }
-  console.log(words);
   $("#tutorial").fadeOut(500);
   setTimeout(() => {
     $("#tutorial").html(
