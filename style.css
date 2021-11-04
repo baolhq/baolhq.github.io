@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Mono&family=Quicksand&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #2e3440;
+  color: #eceff4;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: grid;
+  place-content: center;
+  font-size: 14px;
+}
+
+.date-time {
+  text-align: center;
+  transition: all 0.4s ease;
+  margin-bottom: 120px;
+}
+
+#time {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 13rem;
+  font-weight: 100;
+}
+
+#date {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  margin-top: -220px;
+}
+
+#quote-container {
+  height: 300px;
+}
+
+#quote,
+#author {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 200;
+  margin: auto;
+  width: 500px;
+}
+
+#quote {
+  text-indent: 3rem;
+  color: #e5e9f0cf;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+#quote::first-letter {
+  font-size: 3.2rem;
+  line-height: 0.5;
+}
+
+#author {
+  color: #d8dee9de;
+  font-size: 0.9rem;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-right: 4rem;
+  text-align: right;
+}
