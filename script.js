@@ -10,9 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 1000);
 });
 
-// Mine is UTC+7, so I use this
 function updateDateTime() {
-  let dateTime = Date.parse(new Date().addHours(7)).toString().split(" ");
+  let dateTime = Date.parse(new Date()).toString().split(" ");
   let time = dateTime[4];
 
   [1, 1, 1, 1].forEach((_) => {
