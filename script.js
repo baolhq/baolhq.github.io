@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function updateDateTime() {
-  const result = await fetch("http://worldtimeapi.org/api/ip");
+  const result = await fetch("https://worldtimeapi.org/api/ip");
   const data = await result.json();
 
   let dateTime = document.querySelector("#date-time");
