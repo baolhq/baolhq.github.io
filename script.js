@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // Update date and time once on startup
-  updateDateTime();
-  updateQuote();
+  await updateDateTime();
+  await updateQuote();
 
-  setInterval(() => {
-    updateDateTime();
+  setInterval(async () => {
+    await updateDateTime();
   }, 20000); // 20s reload once, reduce this to increase accuracy
 });
 
