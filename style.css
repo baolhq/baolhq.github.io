@@ -18,7 +18,8 @@ body {
   transition: all 0.4s ease;
 }
 
-::selection {
+::selection,
+::-moz-selection {
   background-color: #d8dee9;
   color: #2e3440;
 }
