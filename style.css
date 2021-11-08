@@ -17,10 +17,19 @@ body {
   font-size: 14px;
 }
 
-.date-time {
+#date-time {
   text-align: center;
   transition: all 0.4s ease;
   margin-bottom: 120px;
+  transition: all 0.4s ease;
+}
+
+#date-time.not-loaded {
+  opacity: 0;
+}
+
+#date-time.loaded {
+  opacity: 1;
 }
 
 #time {

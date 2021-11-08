@@ -1,24 +1,38 @@
-let timeElement = document.getElementById("time");
-let dateElement = document.getElementById("date");
-
 document.addEventListener("DOMContentLoaded", () => {
-  // updateDateTime();
+  // Update date and time once on startup
+  updateDateTime();
   updateQuote();
 
-  // setInterval(() => {
-  //   updateDateTime();
-  // }, 20000);
+  setInterval(() => {
+    updateDateTime();
+  }, 20000); // 20s reload once, reduce this to increase accuracy
 });
 
 async function updateDateTime() {
   const result = await fetch("http://worldtimeapi.org/api/ip");
   const data = await result.json();
 
-  if (result.ok) {
-    console.log(data.datetime);
+  let dateTime = document.querySelector("#date-time");
+  let timeElement = document.getElementById("time");
+  let dateElement = document.getElementById("date");
 
-    timeElement.innerHTML = removedSecondsTime.join(":");
-    dateElement.innerHTML = date;
+  if (result.ok) {
+    // Parse date to easy-to-read format
+    let parsedDate = Date.parse(new Date(data.datetime));
+
+    // Time in format hh:mm:ss
+    let time = parsedDate.toString().split(" ")[4];
+
+    // Remove seconds at the end
+    timeElement.innerHTML = time.toString().substring(0, 5);
+
+    // Get date only, the rest behind is eliminated
+    dateElement.innerHTML = parsedDate.toString().substring(0, 16);
+
+    // Transparency effect
+    dateTime.classList.add("loaded");
+  } else {
+    console.log(data);
   }
 }
 
