@@ -2,30 +2,24 @@ let timeElement = document.getElementById("time");
 let dateElement = document.getElementById("date");
 
 document.addEventListener("DOMContentLoaded", () => {
-  updateDateTime();
+  // updateDateTime();
   updateQuote();
 
-  setInterval(() => {
-    updateDateTime();
-  }, 1000);
+  // setInterval(() => {
+  //   updateDateTime();
+  // }, 20000);
 });
 
-function updateDateTime() {
-  let dateTime = Date.parse(new Date()).toString().split(" ");
-  let time = dateTime[4];
+async function updateDateTime() {
+  const result = await fetch("http://worldtimeapi.org/api/ip");
+  const data = await result.json();
 
-  [1, 1, 1, 1].forEach((_) => {
-    dateTime.pop();
-  });
+  if (result.ok) {
+    console.log(data.datetime);
 
-  let date = dateTime.join(" ");
-  let removedSecondsTime = time.split(":");
-
-  // Pop out the seconds
-  removedSecondsTime.pop();
-
-  timeElement.innerHTML = removedSecondsTime.join(":");
-  dateElement.innerHTML = date;
+    timeElement.innerHTML = removedSecondsTime.join(":");
+    dateElement.innerHTML = date;
+  }
 }
 
 async function updateQuote() {
