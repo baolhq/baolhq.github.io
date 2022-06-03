@@ -1,0 +1,51 @@
+{
+  "default": {
+    "--main-bg-color": "#ffffff",
+    "--border-color": "#ccd0da",
+    "--border-color-focus": "#62677e",
+    "--text-color": "#000000",
+    "--text-color-variant": "#000000"
+  },
+  "midnight": {
+    "--main-bg-color": "#000000",
+    "--border-color": "#312C51",
+    "--border-color-focus": "#48426D",
+    "--text-color": "#F1F6F9",
+    "--text-color-variant": "#F1F6F9"
+  },
+  "nord": {
+    "--main-bg-color": "#2e3440",
+    "--border-color": "#3b4252",
+    "--border-color-focus": "#4c566a",
+    "--text-color": "#eceff4",
+    "--text-color-variant": "#d8dee9"
+  },
+  "nord-light": {
+    "--main-bg-color": "#ECEFF4",
+    "--border-color": "#E5E9F0",
+    "--border-color-focus": "#D8DEE9",
+    "--text-color": "#2E3440",
+    "--text-color-variant": "#4C566A"
+  },
+  "catpunccin": {
+    "--main-bg-color": "#1e1e2e",
+    "--border-color": "#363a4f",
+    "--border-color-focus": "#62677e",
+    "--text-color": "#c6ceef",
+    "--text-color-variant": "#b3bcdf"
+  },
+  "dracula": {
+    "--main-bg-color": "",
+    "--border-color": "",
+    "--border-color-focus": "",
+    "--text-color": "",
+    "--text-color-variant": ""
+  },
+  "tokyo-night": {
+    "--main-bg-color": "",
+    "--border-color": "",
+    "--border-color-focus": "",
+    "--text-color": "",
+    "--text-color-variant": ""
+  }
+}
