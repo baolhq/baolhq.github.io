@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   setInterval(async () => {
     await updateDateTime();
-  }, 1000); // 1s reload once, reduce this to increase accuracy
+  }, 60000); // Reload once each minute, reduce this to increase accuracy
 });
 
 const searchBox = document.querySelector("#search-box");
@@ -32,12 +32,16 @@ searchBox.addEventListener("keypress", async (e) => {
 
     // Use t: to change theme
     if (keyword.startsWith("t:")) {
-      let selectedTheme = keyword.split(" ")[1];
+      let selectedTheme = keyword.split(":")[1];
 
-      if (selectedTheme in themesList) {
-        changeTheme(selectedTheme);
-        searchBox.value = "";
-      }
+      // Check if themesList contains selected theme
+      if (!themesList.hasOwnProperty(selectedTheme) && selectedTheme !== "") return;
+
+      // If selected theme is blank, apply default theme
+      if (selectedTheme === "") selectedTheme = "default";
+
+      changeTheme(selectedTheme);
+      searchBox.value = "";
       return;
     }
 
@@ -55,6 +59,7 @@ searchBox.addEventListener("keypress", async (e) => {
       location = keyword;
     } else {
       // Search with Google
+      keyword = keyword.replace("+", "%2B") // Fix plus sign bug
       let searchKeyword = keyword.split(" ").join("+");
       location = `https://www.google.com/search?q=${searchKeyword}`;
     }
@@ -78,7 +83,7 @@ const checkIfURL = (str) => {
   return str.match(new RegExp(expression));
 };
 
-document.querySelector("#google-icon").addEventListener("click", () => {
+document.querySelector("#google-doodle").addEventListener("click", () => {
   location = "https://www.google.com/search?q=google+doodle+today";
 });
 
@@ -87,8 +92,8 @@ const updateDateTime = async () => {
   const data = await result.json();
 
   let dateTime = document.querySelector("#date-time");
-  let timeElement = document.getElementById("time");
-  let dateElement = document.getElementById("date");
+  let timeElement = document.querySelector("#time");
+  let dateElement = document.querySelector("#date");
 
   if (result.ok) {
     // Parse date to easy-to-read format
@@ -107,8 +112,11 @@ const updateDateTime = async () => {
     // Get date only, the rest behind is eliminated
     dateElement.innerHTML = parsedDate.toString().substring(0, 16);
 
-    // Transparency effect
-    dateTime.classList.add("loaded");
+    // Transparency effect once
+    if (dateTime.classList.contains("not-loaded")) {
+      dateTime.classList.remove("not-loaded");
+      dateTime.classList.add("loaded");
+    }
   } else {
     console.log(data);
   }
@@ -118,7 +126,7 @@ const updateQuote = async () => {
   let quoteContainer = document.querySelector("#quote-container");
   let quote = document.createElement("p");
   quote.setAttribute("id", "quote");
-  let author = document.createElement("p");
+  let author = document.createElement("a");
   author.setAttribute("id", "author");
 
   // Fetch a random quote from the Quotable API
@@ -130,7 +138,7 @@ const updateQuote = async () => {
     quote.textContent = `"${data.content}"`;
     author.textContent = data.author;
   } else {
-    quote.textContent = "An error occurred";
+    quote.textContent = "An error occurred while fetching quote data";
     author.textContent = "Please try again";
     console.log(data);
   }
@@ -140,6 +148,10 @@ const updateQuote = async () => {
 
   fadeIn(quote);
   fadeIn(author);
+
+  // Search Google for author on click
+  let authorSearchKeyword = author.innerHTML.split(" ").join("+")
+  author.setAttribute("href", `https://www.google.com/search?q=${authorSearchKeyword}`)
 };
 
 const fadeIn = (el) => {

@@ -35,11 +35,11 @@
     "--text-color-variant": "#b3bcdf"
   },
   "dracula": {
-    "--main-bg-color": "",
-    "--border-color": "",
-    "--border-color-focus": "",
-    "--text-color": "",
-    "--text-color-variant": ""
+    "--main-bg-color": "#282a36",
+    "--border-color": "#393b47",
+    "--border-color-focus": "#5c5d69",
+    "--text-color": "#f8f8f2",
+    "--text-color-variant": "#d6d6d6"
   },
   "tokyo-night": {
     "--main-bg-color": "",

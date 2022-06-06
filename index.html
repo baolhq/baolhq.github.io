@@ -15,8 +15,8 @@
   <body>
     <main>
       <div id="date-time" class="not-loaded">
-        <p id="time"></p>
-        <p id="date"></p>
+        <p id="time">00:00</p>
+        <p id="date">Fri Jun 03 2022</p>
       </div>
 
       <div class="search-bar-container">
@@ -27,7 +27,12 @@
           placeholder="Search Google or type a URL"
           autofocus
         />
-        <i class="fa-brands fa-google" id="google-icon" title="Google Doodle"></i>
+        <a href="https://www.google.com/search?q=google+doodle+today" id="google-doodle">
+          <i
+            class="fa-brands fa-google"
+            title="Google Doodle"
+          ></i>
+        </a>
       </div>
 
       <div id="quote-container"></div>
