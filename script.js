@@ -35,7 +35,8 @@ searchBox.addEventListener("keypress", async (e) => {
       let selectedTheme = keyword.split(":")[1];
 
       // Check if themesList contains selected theme
-      if (!themesList.hasOwnProperty(selectedTheme) && selectedTheme !== "") return;
+      if (!themesList.hasOwnProperty(selectedTheme) && selectedTheme !== "")
+        return;
 
       // If selected theme is blank, apply default theme
       if (selectedTheme === "") selectedTheme = "default";
@@ -59,7 +60,7 @@ searchBox.addEventListener("keypress", async (e) => {
       location = keyword;
     } else {
       // Search with Google
-      keyword = keyword.replace("+", "%2B") // Fix plus sign bug
+      keyword = keyword.replace("+", "%2B"); // Fix plus sign bug
       let searchKeyword = keyword.split(" ").join("+");
       location = `https://www.google.com/search?q=${searchKeyword}`;
     }
@@ -150,8 +151,11 @@ const updateQuote = async () => {
   fadeIn(author);
 
   // Search Google for author on click
-  let authorSearchKeyword = author.innerHTML.split(" ").join("+")
-  author.setAttribute("href", `https://www.google.com/search?q=${authorSearchKeyword}`)
+  let authorSearchKeyword = author.innerHTML.split(" ").join("+");
+  author.setAttribute(
+    "href",
+    `https://www.google.com/search?q=${authorSearchKeyword}`
+  );
 };
 
 const fadeIn = (el) => {
@@ -206,3 +210,35 @@ const loadConfig = async () => {
 const saveConfig = (newConfigs) => {
   localStorage.setItem("configs", JSON.stringify(newConfigs));
 };
+
+let configBtn = document.querySelector("#config-btn");
+let prefWindow = document.querySelector("#preferences");
+let content = document.querySelector("#content");
+let prefWindowOpened = false;
+// Show/hide preferences window
+window.addEventListener("click", () => {
+  // Hide window
+  prefWindow.style.userSelect = "none";
+  prefWindow.style.opacity = 0;
+  prefWindow.style.transform = "translate(-50%, -80%)";
+  content.style.filter = "";
+  prefWindowOpened = false;
+});
+configBtn.addEventListener("click", (ev) => {
+  ev.stopPropagation();
+  if (!prefWindowOpened) {
+    prefWindow.style.userSelect = "auto";
+    prefWindow.style.opacity = 1;
+    prefWindow.style.transform = "translate(-50%, -50%)";
+    content.style.filter = "blur(10px)";
+  } else {
+    prefWindow.style.userSelect = "none";
+    prefWindow.style.opacity = 0;
+    prefWindow.style.transform = "translate(-50%, -80%)";
+    content.style.filter = "";
+  }
+  prefWindowOpened = !prefWindowOpened;
+});
+prefWindow.addEventListener("click", (ev) => {
+  ev.stopPropagation();
+});

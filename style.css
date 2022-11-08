@@ -24,7 +24,6 @@ body {
   place-content: center;
   font-size: 14px;
   background-size: cover;
-  transition: all 0.4s ease;
 }
 
 ::selection {
@@ -170,4 +169,78 @@ body {
   #quote-container {
     width: 300px;
   }
+}
+
+#config-btn {
+  background: none;
+  border: none;
+  width: fit-content;
+  height: fit-content;
+  font-size: 24px;
+  color: var(--text-color);
+  opacity: 0.25;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  transition: all 0.4s ease;
+}
+
+#config-btn:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+main {
+  transition: filter 0.4s ease;
+}
+#preferences {
+  background: var(--main-bg-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  border: 2px solid var(--border-color-focus);
+  border-radius: 12px;
+  padding: 0px 18px 16px 18px;
+  font-family: "Quicksand", sans-serif;
+  width: 420px;
+  font-size: 1.2em;
+  transition: all 0.4s ease;
+  opacity: 0;
+  user-select: none;
+}
+
+.themes,
+.ui-elems {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.themes > div,
+.ui-elems > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 0;
+  letter-spacing: 0.05em;
+}
+
+.themes hr,
+.ui-elems hr {
+  width: 150px;
+  border-top: 1px dotted var(--border-color);
+  opacity: 0.2;
+}
+
+.themes label,
+.ui-elems label {
+  width: 150px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  border: 0px;
+  width: 1.2em;
+  height: 1.2em;
 }

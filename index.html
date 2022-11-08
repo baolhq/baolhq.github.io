@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
+    <main id="content">
       <div id="date-time" class="not-loaded">
         <p id="time">00:00</p>
         <p id="date">Fri Jun 03 2022</p>
@@ -30,13 +30,108 @@
         <a
           href="https://www.google.com/search?q=google+doodle+today"
           id="google-doodle"
+          title="Google Doodle"
         >
-          <i class="fa-brands fa-google" title="Google Doodle"></i>
+          <i class="fa-brands fa-google"></i>
         </a>
       </div>
 
       <div id="quote-container"></div>
     </main>
+
+    <button id="config-btn" title="Preferences">
+      <i class="fa-solid fa-gear"></i>
+    </button>
+
+    <div id="preferences">
+      <div class="themes">
+        <h3>Themes</h3>
+        <div>
+          <label for="default-theme">Default</label>
+          <hr />
+          <input
+            type="radio"
+            id="default-theme"
+            name="theme"
+            checked
+            onclick="changeTheme('default')"
+          />
+        </div>
+        <div>
+          <label for="midnight-theme">Midnight</label>
+          <hr />
+          <input
+            type="radio"
+            id="midnight-theme"
+            name="theme"
+            onclick="changeTheme('midnight')"
+          />
+        </div>
+        <div>
+          <label for="nord-theme">Nord</label>
+          <hr />
+          <input
+            type="radio"
+            id="nord-theme"
+            name="theme"
+            onclick="changeTheme('nord')"
+          />
+        </div>
+        <div>
+          <label for="nord-light-theme">Nord Light</label>
+          <hr />
+          <input
+            type="radio"
+            id="nord-light-theme"
+            name="theme"
+            onclick="changeTheme('nord-light')"
+          />
+        </div>
+        <div>
+          <label for="catpunccin-theme">Catpunccin</label>
+          <hr />
+          <input
+            type="radio"
+            id="catpunccin-theme"
+            name="theme"
+            onclick="changeTheme('catpunccin')"
+          />
+        </div>
+        <div>
+          <label for="dracula-theme">Dracula</label>
+          <hr />
+          <input
+            type="radio"
+            id="dracula-theme"
+            name="theme"
+            onclick="changeTheme('dracula')"
+          />
+        </div>
+      </div>
+      <div class="ui-elems">
+        <h3>UI Elements</h3>
+        <div>
+          <label for="show-clock">Show clock</label>
+          <hr />
+          <input type="checkbox" checked id="show-clock" />
+        </div>
+        <div>
+          <label for="show-date">Show date</label>
+          <hr />
+          <input type="checkbox" checked id="show-date" />
+        </div>
+        <div>
+          <label for="show-search-box">Show search box</label>
+          <hr />
+          <input type="checkbox" checked id="show-search-box" />
+        </div>
+        <div>
+          <label for="show-quote">Show quote</label>
+          <hr />
+          <input type="checkbox" checked id="show-quote" />
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
