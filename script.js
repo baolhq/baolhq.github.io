@@ -218,23 +218,20 @@ let prefWindowOpened = false;
 // Show/hide preferences window
 window.addEventListener("click", () => {
   // Hide window
-  prefWindow.style.userSelect = "none";
   prefWindow.style.opacity = 0;
-  prefWindow.style.transform = "translate(-50%, -80%)";
+  prefWindow.style.transform = "translate(-50%, -200%)";
   content.style.filter = "";
   prefWindowOpened = false;
 });
 configBtn.addEventListener("click", (ev) => {
   ev.stopPropagation();
   if (!prefWindowOpened) {
-    prefWindow.style.userSelect = "auto";
     prefWindow.style.opacity = 1;
     prefWindow.style.transform = "translate(-50%, -50%)";
     content.style.filter = "blur(10px)";
   } else {
-    prefWindow.style.userSelect = "none";
     prefWindow.style.opacity = 0;
-    prefWindow.style.transform = "translate(-50%, -80%)";
+    prefWindow.style.transform = "translate(-50%, -200%)";
     content.style.filter = "";
   }
   prefWindowOpened = !prefWindowOpened;

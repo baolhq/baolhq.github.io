@@ -198,16 +198,15 @@ main {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -80%);
+  transform: translate(-50%, -200%);
   border: 2px solid var(--border-color-focus);
   border-radius: 12px;
   padding: 0px 18px 16px 18px;
   font-family: "Quicksand", sans-serif;
   width: 420px;
   font-size: 1.2em;
-  transition: all 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.075, 1.42, 0.165, 1);
   opacity: 0;
-  user-select: none;
 }
 
 .themes,
