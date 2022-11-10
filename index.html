@@ -11,15 +11,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="res/internet.png" type="image/png" />
   </head>
   <body>
     <main id="content">
       <div id="date-time" class="not-loaded">
-        <p id="time">00:00</p>
+        <span id="time">00:00</span>
+        <span id="secs" class="hide">:00</span>
         <p id="date">Fri Jun 03 2022</p>
       </div>
 
-      <div class="search-bar-container">
+      <div id="search-bar-container">
         <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
         <input
           type="text"
@@ -111,24 +113,49 @@
       <div class="ui-elems">
         <h3>UI Elements</h3>
         <div>
-          <label for="show-clock">Show clock</label>
+          <label for="show-time">Show time</label>
           <hr />
-          <input type="checkbox" checked id="show-clock" />
+          <input
+            type="checkbox"
+            checked
+            id="show-time"
+            onclick="toggleShow('time')"
+          />
+        </div>
+        <div>
+          <label for="show-secs">Show seconds</label>
+          <hr />
+          <input type="checkbox" id="show-secs" onclick="toggleSecs()" />
         </div>
         <div>
           <label for="show-date">Show date</label>
           <hr />
-          <input type="checkbox" checked id="show-date" />
+          <input
+            type="checkbox"
+            checked
+            id="show-date"
+            onclick="toggleShow('date')"
+          />
         </div>
         <div>
           <label for="show-search-box">Show search box</label>
           <hr />
-          <input type="checkbox" checked id="show-search-box" />
+          <input
+            type="checkbox"
+            checked
+            id="show-search-box"
+            onclick="toggleSearchBox()"
+          />
         </div>
         <div>
           <label for="show-quote">Show quote</label>
           <hr />
-          <input type="checkbox" checked id="show-quote" />
+          <input
+            type="checkbox"
+            checked
+            id="show-quote"
+            onclick="toggleShow('quote-container')"
+          />
         </div>
       </div>
     </div>

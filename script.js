@@ -1,4 +1,5 @@
 let themesList = {};
+
 let configs = {};
 document.addEventListener("DOMContentLoaded", async () => {
   themesList = await loadThemesList();
@@ -8,6 +9,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Change theme base on "theme" in configs file
   changeTheme(configs.theme);
+
+  setSecondsVisibility(configs.showSeconds);
+  document.querySelector("#show-secs").checked = configs.showSeconds;
+  setShow(document.querySelector("#time"), configs.showTime, false, true);
+  document.querySelector("#show-time").checked = configs.showTime;
+  setShow(
+    document.querySelector("#search-bar-container"),
+    configs.showSearchBox,
+    true
+  );
+  document.querySelector("#show-search-box").checked = configs.showSearchBox;
+  setShow(document.querySelector("#quote-container"), configs.showQuote);
+  document.querySelector("#show-quote").checked = configs.showQuote;
 
   // Change background with configs backgroundURL
   if (configs.backgroundURL !== "") {
@@ -20,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   setInterval(async () => {
     await updateDateTime();
-  }, 60000); // Reload once each minute, reduce this to increase accuracy
+  }, 500); // Reload once each minute, reduce this to increase accuracy
 });
 
 const searchBox = document.querySelector("#search-box");
@@ -94,6 +108,7 @@ const updateDateTime = async () => {
 
   let dateTime = document.querySelector("#date-time");
   let timeElement = document.querySelector("#time");
+  let secsElement = document.getElementById("secs");
   let dateElement = document.querySelector("#date");
 
   if (result.ok) {
@@ -103,12 +118,8 @@ const updateDateTime = async () => {
     // Time in format hh:mm:ss
     let time = parsedDate.toString().split(" ")[4];
 
-    if (configs.showSeconds) {
-      timeElement.innerHTML = time.toString();
-    } else {
-      // Remove seconds at the end
-      timeElement.innerHTML = time.toString().substring(0, 5);
-    }
+    timeElement.innerHTML = time.toString().substring(0, 5);
+    secsElement.innerHTML = time.toString().substring(5);
 
     // Get date only, the rest behind is eliminated
     dateElement.innerHTML = parsedDate.toString().substring(0, 16);
@@ -170,7 +181,7 @@ const fadeIn = (el) => {
 // Load themes from local colors.json file
 const loadThemesList = async () => {
   return await axios
-    .get("./colors.json")
+    .get("res/colors.json")
     .then((res) => res.data)
     .catch((err) => console.log(err));
 };
@@ -195,7 +206,7 @@ const loadConfig = async () => {
   if (userConfig === null) {
     // If user configs does not exist, create new one
     return await axios
-      .get("configs.json")
+      .get("res/configs.json")
       .then((res) => {
         saveConfig(res.data);
         return res.data;
@@ -239,3 +250,61 @@ configBtn.addEventListener("click", (ev) => {
 prefWindow.addEventListener("click", (ev) => {
   ev.stopPropagation();
 });
+
+const toggleShow = (id) => {
+  let elem = document.querySelector(`#${id}`);
+
+  if (id === "time") {
+    if (elem.style.display !== "none") setShow(elem, false, false, true);
+    else setShow(elem, true, false, true);
+    return;
+  }
+
+  if (elem.style.display === "block" || elem.style.display === "") {
+    setShow(elem, false);
+  } else setShow(elem, true);
+};
+
+const toggleSearchBox = () => {
+  let elem = document.querySelector(`#search-bar-container`);
+
+  if (elem.style.display === "flex" || elem.style.display === "") {
+    setShow(elem, false, true);
+  } else setShow(elem, true, true);
+};
+
+const toggleSecs = () => {
+  let secs = document.querySelector("#secs");
+  secs.classList.toggle("hide");
+  configs.showSeconds = !secs.classList.contains("hide");
+  saveConfig(configs);
+};
+
+const setShow = (elem, show, isSearchBox, isTime) => {
+  if (isSearchBox)
+    show ? (elem.style.display = "flex") : (elem.style.display = "none");
+  else if (isTime)
+    show ? (elem.style.display = "inline") : (elem.style.display = "none");
+  else show ? (elem.style.display = "block") : (elem.style.display = "none");
+
+  switch (elem.id) {
+    case "time":
+      configs.showTime = show;
+      break;
+    case "date":
+      configs.showDate = show;
+      break;
+    case "search-bar-container":
+      configs.showSearch = show;
+      break;
+    case "quote-container":
+      configs.showQuote = show;
+      break;
+  }
+  saveConfig(configs);
+};
+
+const setSecondsVisibility = (show) => {
+  let secs = document.querySelector("#secs");
+  show ? secs.classList.remove("hide") : secs.classList.add("hide");
+};
