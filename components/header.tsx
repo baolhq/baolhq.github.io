@@ -25,14 +25,14 @@ import { DialogTitle } from "./ui/dialog";
 import { useTheme } from "next-themes";
 
 export default function Header() {
-  const [open, setOpen] = React.useState(false);
+  const [commandOpen, setCommandOpen] = React.useState(false);
   const { setTheme } = useTheme();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setCommandOpen((open) => !open);
       }
     };
     document.addEventListener("keydown", down);
@@ -56,39 +56,27 @@ export default function Header() {
             <nav className="flex items-center gap-4 text-sm xl:gap-6">
               <Link
                 className="transition-colors hover:text-foreground/80 text-foreground/80"
-                href="/docs"
+                href="/"
               >
-                Docs
+                Home
               </Link>
               <Link
                 className="transition-colors hover:text-foreground/80 text-foreground/80"
-                href="/docs/components"
+                href="/blogs"
               >
-                Components
+                Blogs
               </Link>
               <Link
                 className="transition-colors hover:text-foreground/80 text-foreground/80"
-                href="/blocks"
+                href="/projects"
               >
-                Blocks
+                Projects
               </Link>
               <Link
                 className="transition-colors hover:text-foreground/80 text-foreground/80"
-                href="/charts"
+                href="/about"
               >
-                Charts
-              </Link>
-              <Link
-                className="transition-colors hover:text-foreground/80 text-foreground/80"
-                href="/themes"
-              >
-                Themes
-              </Link>
-              <Link
-                className="transition-colors hover:text-foreground/80 text-foreground/80"
-                href="/colors"
-              >
-                Colors
+                About me
               </Link>
             </nav>
           </div>
@@ -107,26 +95,17 @@ export default function Header() {
                 </DrawerTitle>
               </DrawerHeader>
               <DrawerFooter>
-                <Link className="text-center p-1" href="/docs">
+                <Link className="text-center p-1" href="/">
                   Home
                 </Link>
-                <Link className="text-center p-1" href="/docs">
-                  Documentation
+                <Link className="text-center p-1" href="/blogs">
+                  Blogs
                 </Link>
-                <Link className="text-center p-1" href="/docs">
-                  Components
+                <Link className="text-center p-1" href="/projects">
+                  Project
                 </Link>
-                <Link className="text-center p-1" href="/docs">
-                  Blocks
-                </Link>
-                <Link className="text-center p-1" href="/docs">
-                  Charts
-                </Link>
-                <Link className="text-center p-1" href="/docs">
-                  Themes
-                </Link>
-                <Link className="text-center p-1" href="/docs">
-                  Colors
+                <Link className="text-center p-1" href="/about">
+                  About me
                 </Link>
               </DrawerFooter>
             </DrawerContent>
@@ -134,11 +113,11 @@ export default function Header() {
           <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
             <div
               className="w-full flex-1 md:w-auto md:flex-none"
-              onClick={() => setOpen(true)}
+              onClick={() => setCommandOpen(true)}
             >
               <button className="inline-flex items-center gap-2 whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input hover:bg-accent hover:text-accent-foreground px-4 py-2 relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64">
                 <span className="hidden lg:inline-flex">
-                  Search documentation...
+                  Type here to search...
                 </span>
                 <span className="inline-flex lg:hidden">Search...</span>
                 <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
@@ -171,7 +150,7 @@ export default function Header() {
         </div>
       </div>
 
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog open={commandOpen} onOpenChange={setCommandOpen}>
         <DialogTitle className="sr-only">Command dialog</DialogTitle>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
@@ -182,10 +161,11 @@ export default function Header() {
             <CommandItem>Calculator</CommandItem>
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>Profile</CommandItem>
-            <CommandItem>Billing</CommandItem>
-            <CommandItem>Settings</CommandItem>
+          <CommandGroup heading="Sections">
+            <CommandItem>Home</CommandItem>
+            <CommandItem>Blogs</CommandItem>
+            <CommandItem>Project</CommandItem>
+            <CommandItem>About me</CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog>
