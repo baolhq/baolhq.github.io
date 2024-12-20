@@ -40,7 +40,7 @@ export default function Header() {
   }, []);
 
   const toggleTheme = () => {
-    let currentTheme = localStorage.getItem("theme");
+    const currentTheme = localStorage.getItem("theme");
     if (!currentTheme || currentTheme == "light") {
       setTheme("dark");
     } else {
